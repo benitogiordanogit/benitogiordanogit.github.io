@@ -88,7 +88,7 @@
 
         .header h1 {
             font-family: 'Bangers', cursive;
-            font-size: 3.5em;
+            font-size: 4em;
             text-shadow: 
                 4px 4px 0px #C54000,
                 6px 6px 0px rgba(0,0,0,0.3);
@@ -105,7 +105,7 @@
         }
 
         .dragon-ball-counter {
-            font-size: 1.4em;
+            font-size: 1.6em;
             margin-top: 15px;
             font-weight: 700;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
@@ -148,7 +148,7 @@
         .welcome-screen h2 {
             color: #ffffff;
             margin-bottom: 20px;
-            font-size: 2.5em;
+            font-size: 3em;
             font-weight: 900;
             text-shadow: 
                 -2px -2px 0 #000,
@@ -165,7 +165,7 @@
         }
 
         .welcome-screen p {
-            font-size: 1.3em;
+            font-size: 1.5em;
             color: #ffffff;
             line-height: 1.8;
             margin-bottom: 30px;
@@ -184,7 +184,7 @@
             color: white;
             border: 4px solid #FDB913;
             padding: 18px 50px;
-            font-size: 1.5em;
+            font-size: 1.7em;
             font-weight: 900;
             border-radius: 50px;
             cursor: pointer;
@@ -223,7 +223,7 @@
             border-radius: 25px;
             margin-bottom: 25px;
             font-weight: 900;
-            font-size: 1.3em;
+            font-size: 1.5em;
             border: 3px solid #FDB913;
             box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
@@ -245,7 +245,7 @@
         .case-content h3 {
             color: #FF6B35;
             margin-bottom: 20px;
-            font-size: 1.8em;
+            font-size: 2em;
             font-weight: 900;
             text-shadow: 2px 2px 0px rgba(253, 185, 19, 0.3);
             -webkit-text-stroke: 1.5px black;
@@ -255,7 +255,7 @@
         .case-content p {
             color: #1a4d7a;
             line-height: 1.9;
-            font-size: 1.15em;
+            font-size: 1.25em;
             white-space: pre-line;
             font-weight: 400;
         }
@@ -269,7 +269,7 @@
             font-weight: 900;
             color: #ffffff;
             margin-bottom: 25px;
-            font-size: 1.5em;
+            font-size: 1.7em;
             text-shadow: 
                 -2px -2px 0 #000,
                 2px -2px 0 #000,
@@ -293,7 +293,7 @@
             transition: all 0.3s;
             display: flex;
             align-items: center;
-            font-size: 1.15em;
+            font-size: 1.25em;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             font-weight: 400;
         }
@@ -338,7 +338,7 @@
             margin-top: 20px;
             padding: 20px;
             border-radius: 15px;
-            font-size: 1.2em;
+            font-size: 1.4em;
             font-weight: 700;
             text-align: center;
             display: none;
@@ -373,7 +373,7 @@
 
         .radar-screen h2 {
             color: #ffffff;
-            font-size: 2.5em;
+            font-size: 3em;
             font-weight: 900;
             margin-bottom: 20px;
             text-shadow: 
@@ -578,6 +578,21 @@
                 0 0 30px rgba(0, 255, 0, 0.5);
         }
 
+        /* Triangolo rosso al centro del radar */
+        .radar-center-marker {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-bottom: 20px solid #ff0000;
+            filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.8));
+            z-index: 10;
+        }
+
         @keyframes blipPulse {
             0%, 100% { 
                 opacity: 1; 
@@ -603,7 +618,7 @@
             padding: 25px;
             border-radius: 20px;
             margin-top: 30px;
-            font-size: 1.3em;
+            font-size: 1.5em;
             font-weight: 700;
             border: 4px solid #FF6B35;
             box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
@@ -619,7 +634,7 @@
 
         .completion-screen h2 {
             color: #ffffff;
-            font-size: 3em;
+            font-size: 3.5em;
             font-weight: 900;
             margin-bottom: 30px;
             text-shadow: 
@@ -641,7 +656,7 @@
         }
 
         .completion-screen p {
-            font-size: 1.5em;
+            font-size: 1.7em;
             color: white;
             margin-bottom: 40px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
@@ -727,12 +742,14 @@
         <div class="content">
             <!-- Schermata iniziale -->
             <div class="welcome-screen" id="welcomeScreen">
-                <h2>Benvenuto, giovane medico!</h2>
+                <h2>Benvenuto, Benito!</h2>
                 <p>
-                    Le leggendarie Sfere del Drago sono nascoste in diversi luoghi della casa!<br>
-                    Per trovarle, dovrai risolvere 7 casi clinici impegnativi.<br><br>
-                    Ogni caso risolto ti darà le coordinate esatte di una sfera.<br>
-                    Riuscirai a raccoglierle tutte e realizzare il tuo desiderio?
+                    Nelle ombre della casa si celano le <strong>Sette Sfere del Drago</strong>, reliquie antiche dal potere incommensurabile. 🐉<br>
+                    Solo i più valorosi sapranno trovarle, affrontando prove degne di un vero eroe.<br><br>
+                    Ogni sfera è protetta da un <strong>caso clinico misterioso</strong>, un enigma che metterà alla prova la tua mente e il tuo coraggio.<br>
+                    Risolvine uno, e le <em>coordinate segrete</em> di una Sfera ti saranno rivelate.<br><br>
+                    Sette sfide, sette reliquie, un solo destino: <strong>riunirle tutte e far avverare il tuo desiderio più profondo</strong>.<br>
+                    Sei pronto a intraprendere questa missione leggendaria?
                 </p>
                 <button class="btn" onclick="startHunt()">INIZIA LA CACCIA!</button>
             </div>
@@ -790,6 +807,7 @@
                         <div class="radar-circle" style="width: 20%; height: 20%;"></div>
                         <div class="radar-sweep"></div>
                         <div class="radar-blip"></div>
+                        <div class="radar-center-marker"></div>
                     </div>
                 </div>
 
@@ -1044,6 +1062,64 @@
         let currentCase = 0;
         let collectedBalls = 0;
 
+        // Funzione per riprodurre il suono del radar
+        function playRadarSound() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            let beepCount = 0;
+            const maxBeeps = 6; // 6 beep in 3 secondi (uno ogni 0.5 secondi)
+            
+            function playBeep() {
+                if (beepCount >= maxBeeps) return;
+                
+                // Beep principale del radar
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = 800; // Frequenza del beep
+                oscillator.type = 'sine';
+                
+                // Envelope per il suono
+                gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+                gainNode.gain.linearRampToValueAtTime(0.3, audioContext.currentTime + 0.01);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.2);
+                
+                // Secondo beep leggermente più alto
+                setTimeout(() => {
+                    const oscillator2 = audioContext.createOscillator();
+                    const gainNode2 = audioContext.createGain();
+                    
+                    oscillator2.connect(gainNode2);
+                    gainNode2.connect(audioContext.destination);
+                    
+                    oscillator2.frequency.value = 1000;
+                    oscillator2.type = 'sine';
+                    
+                    gainNode2.gain.setValueAtTime(0, audioContext.currentTime);
+                    gainNode2.gain.linearRampToValueAtTime(0.3, audioContext.currentTime + 0.01);
+                    gainNode2.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2);
+                    
+                    oscillator2.start(audioContext.currentTime);
+                    oscillator2.stop(audioContext.currentTime + 0.2);
+                }, 100);
+                
+                beepCount++;
+                
+                // Ripeti il beep dopo 0.5 secondi
+                if (beepCount < maxBeeps) {
+                    setTimeout(playBeep, 500);
+                }
+            }
+            
+            // Inizia la sequenza di beep
+            playBeep();
+        }
+
         function startHunt() {
             document.getElementById('welcomeScreen').style.display = 'none';
             document.getElementById('caseScreen').style.display = 'block';
@@ -1119,6 +1195,9 @@
             
             document.getElementById('caseScreen').style.display = 'none';
             document.getElementById('radarScreen').style.display = 'block';
+            
+            // Riproduce il suono del radar
+            playRadarSound();
             
             const starContainer = document.getElementById('currentStar');
             const starString = cases[currentCase].star;
