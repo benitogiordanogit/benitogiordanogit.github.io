@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caccia alle Sfere del Drago 🐉</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+        }
+
+        .dragon-ball-counter {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .welcome-screen {
+            text-align: center;
+        }
+
+        .welcome-screen h2 {
+            color: #764ba2;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .welcome-screen p {
+            font-size: 1.2em;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .case-screen {
+            display: none;
+        }
+
+        .case-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .case-content {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+
+        .case-content h3 {
+            color: #764ba2;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .case-content p {
+            color: #333;
+            line-height: 1.8;
+            font-size: 1.1em;
+            white-space: pre-line;
+        }
+
+        .answer-section {
+            margin-top: 30px;
+        }
+
+        .answer-section > label {
+            display: block;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+        }
+
+        .option {
+            background: #f8f9fa;
+            border: 3px solid #ddd;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            font-size: 1.1em;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            background: #e8eaf6;
+            transform: translateX(5px);
+        }
+
+        .option input[type="radio"] {
+            margin-right: 15px;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            accent-color: #667eea;
+        }
+
+        .option.selected {
+            border-color: #667eea;
+            background: #e8eaf6;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .option label {
+            cursor: pointer;
+            flex: 1;
+            color: #333;
+        }
+
+        .submit-btn {
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .radar-screen {
+            display: none;
+            text-align: center;
+        }
+
+        .radar-container {
+            position: relative;
+            width: 450px;
+            height: 450px;
+            margin: 30px auto;
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 50%, #66BB6A 100%);
+            border-radius: 50%;
+            border: 15px solid #e0e0e0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3), inset 0 0 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        /* Bottone superiore del radar */
+        .radar-container::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 30px;
+            background: linear-gradient(180deg, #f0f0f0 0%, #d0d0d0 100%);
+            border-radius: 5px 5px 0 0;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .radar-grid {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Griglia del radar - linee verticali e orizzontali */
+        .radar-grid::before,
+        .radar-grid::after {
+            content: '';
+            position: absolute;
+            background: rgba(0, 0, 0, 0.15);
+        }
+
+        /* Linee della griglia */
+        .grid-line {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.15);
+        }
+
+        .grid-line.vertical {
+            width: 1px;
+            height: 100%;
+            top: 0;
+        }
+
+        .grid-line.horizontal {
+            width: 100%;
+            height: 1px;
+            left: 0;
+        }
+
+        .radar-circle {
+            position: absolute;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .radar-circle:nth-child(1) { width: 25%; height: 25%; }
+        .radar-circle:nth-child(2) { width: 50%; height: 50%; }
+        .radar-circle:nth-child(3) { width: 75%; height: 75%; }
+        .radar-circle:nth-child(4) { width: 95%; height: 95%; }
+
+        .radar-line {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.25);
+            top: 50%;
+            left: 50%;
+            z-index: 1;
+        }
+
+        .radar-line.horizontal {
+            width: 100%;
+            height: 2px;
+            transform: translate(-50%, -50%);
+        }
+
+        .radar-line.vertical {
+            width: 2px;
+            height: 100%;
+            transform: translate(-50%, -50%);
+        }
+
+        .radar-scanner {
+            position: absolute;
+            width: 3px;
+            height: 48%;
+            background: linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,0.4));
+            top: 50%;
+            left: 50%;
+            transform-origin: bottom center;
+            animation: scan 4s linear infinite;
+            z-index: 2;
+        }
+
+        @keyframes scan {
+            from { transform: translate(-50%, -100%) rotate(0deg); }
+            to { transform: translate(-50%, -100%) rotate(360deg); }
+        }
+
+        /* Centro del radar - triangolo rosso */
+        .radar-center {
+            position: absolute;
+            width: 0;
+            height: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-bottom: 20px solid #d32f2f;
+            z-index: 3;
+        }
+
+        .dragon-ball-blip {
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            background: radial-gradient(circle, #FFA726 0%, #FF9800 100%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 15px rgba(255, 167, 38, 0.8);
+            animation: pulse 1.5s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #d32f2f;
+            font-size: 1.1em;
+            z-index: 4;
+            border: 2px solid #FF9800;
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                transform: translate(-50%, -50%) scale(1);
+                box-shadow: 0 0 15px rgba(255, 167, 38, 0.8);
+            }
+            50% { 
+                transform: translate(-50%, -50%) scale(1.3);
+                box-shadow: 0 0 25px rgba(255, 167, 38, 1);
+            }
+        }
+
+        .coordinates-box {
+            background: linear-gradient(135deg, #2e7d32 0%, #388e3c 100%);
+            color: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+            border: 3px solid #4CAF50;
+            font-family: 'Arial', sans-serif;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .coordinates-box h3 {
+            color: #FFD54F;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .coordinates-box p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        .error-message {
+            background: #ff4444;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .success-message {
+            background: #44ff44;
+            color: #1a1a2e;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            display: none;
+            font-weight: bold;
+        }
+
+        .stars {
+            font-size: 3em;
+            margin: 20px 0;
+        }
+
+        .completion-screen {
+            display: none;
+            text-align: center;
+        }
+
+        .completion-screen h2 {
+            color: #764ba2;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .completion-screen .stars {
+            font-size: 5em;
+        }
+
+        @media (max-width: 600px) {
+            .radar-container {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🐉 CACCIA ALLE SFERE DEL DRAGO 🐉</h1>
+            <div class="dragon-ball-counter">
+                Sfere raccolte: <span id="ballsCollected">0</span>/7 ⭐
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- Schermata iniziale -->
+            <div class="welcome-screen" id="welcomeScreen">
+                <h2>Benvenuto, Benito 🐉</h2>
+                <p>
+                    Tuo fratello ti ha preparato una <strong>sfida speciale</strong>!<br><br>
+                    Ti aspettano <strong>7 casi clinici misteriosi</strong>: enigmi medici complessi che metteranno alla prova la tua mente e la tua preparazione.<br><br>
+                    Ogni volta che risolverai correttamente un caso, scoprirai l’indizio che ti condurrà a una delle
+                    <strong>Sette Sfere del Drago</strong> 🟡 nascoste in casa.<br><br>
+                    Usa il tuo ingegno, la tua logica clinica e il tuo spirito d’avventura per trovarle tutte!<br><br>
+                    <em>Sei pronto a dimostrare di essere il Super Saiyan della Diagnosi?</em> 💥
+                  </p>
+                <button class="btn" onclick="startHunt()">Inizia la Caccia! 🚀</button>
+            </div>
+
+            <!-- Schermata caso -->
+            <div class="case-screen" id="caseScreen">
+                <div class="case-number">CASO <span id="caseNumber">1</span>/7</div>
+                <div class="case-content">
+                    <h3 id="caseTitle">Titolo del caso</h3>
+                    <p id="caseDescription">Descrizione del caso...</p>
+                </div>
+                <div class="answer-section">
+                    <label>Scegli la tua soluzione:</label>
+                    <div id="optionsContainer"></div>
+                    <button class="btn submit-btn" onclick="checkAnswer()">Risolvi il Caso 🔍</button>
+                </div>
+                <div class="error-message" id="errorMessage">Risposta non corretta. Riprova!</div>
+                <div class="success-message" id="successMessage">✓ Risposta corretta! Attivazione Dragon Radar...</div>
+            </div>
+
+            <!-- Schermata radar -->
+            <div class="radar-screen" id="radarScreen">
+                <h2 style="color: #764ba2; margin-bottom: 20px;">SFERA DEL DRAGO RILEVATA!</h2>
+                <div class="stars" id="currentStar">⭐</div>
+                <div class="radar-container">
+                    <div class="radar-grid">
+                        <!-- Cerchi concentrici -->
+                        <div class="radar-circle"></div>
+                        <div class="radar-circle"></div>
+                        <div class="radar-circle"></div>
+                        <div class="radar-circle"></div>
+                        
+                        <!-- Linee principali -->
+                        <div class="radar-line horizontal"></div>
+                        <div class="radar-line vertical"></div>
+                        
+                        <!-- Griglia aggiuntiva -->
+                        <div class="grid-line vertical" style="left: 25%;"></div>
+                        <div class="grid-line vertical" style="left: 75%;"></div>
+                        <div class="grid-line horizontal" style="top: 25%;"></div>
+                        <div class="grid-line horizontal" style="top: 75%;"></div>
+                    </div>
+                    
+                    <!-- Scanner rotante -->
+                    <div class="radar-scanner"></div>
+                    
+                    <!-- Centro del radar (triangolo rosso) -->
+                    <div class="radar-center"></div>
+                    
+                    <!-- Sfera del drago -->
+                    <div class="dragon-ball-blip" id="ballNumber">1</div>
+                </div>
+                <div class="coordinates-box">
+                    <h3>📍 COORDINATE SFERA</h3>
+                    <p id="coordinates">Caricamento coordinate...</p>
+                </div>
+                <button class="btn" style="margin-top: 30px;" onclick="nextCase()">Caso Successivo →</button>
+            </div>
+
+            <!-- Schermata completamento -->
+            <div class="completion-screen" id="completionScreen">
+                <div class="stars">⭐⭐⭐⭐⭐⭐⭐</div>
+                <h2>MISSIONE COMPLETATA!</h2>
+                <p style="font-size: 1.3em; color: #555; margin: 30px 0;">
+                    Hai trovato tutte e 7 le Sfere del Drago!<br><br>
+                    Ora puoi evocare Shenron ed esprimere un desiderio! 🐉<br><br>
+                    <strong>Congratulazioni, grande investigatore!</strong>
+                </p>
+                <div style="font-size: 5em; margin: 30px 0;">🎉🎊🎁</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ====================
+        // CONFIGURAZIONE CASI
+        // ====================
+        // PERSONALIZZA QUI I TUOI 7 CASI!
+        
+        const cases = [
+            {
+                title: "Febbre che non passa",
+                description: 
+      "🩺 Anamnesi:\n" +
+      "Uomo di 42 anni, insegnante, non fumatore, modesto consumo di alcol.\n" +
+      "Nessuna patologia cronica nota. Non in terapia farmacologica abituale.\n\n" +
+      "Da circa 3 settimane presenta febbre intermittente (fino a 38.5°C),\n" +
+      "astenia marcata, sudorazioni notturne e calo ponderale di 4 kg.\n" +
+      "Riferisce un recente viaggio di lavoro di due settimane in India tre mesi fa.\n" +
+      "All’anamnesi remota: episodio di 'mononucleosi' a 19 anni. Nessun intervento chirurgico.\n\n" +
+      "🧑‍⚕️ Esame obiettivo:\n" +
+      "PA 115/70 mmHg, FC 96 bpm, T 38°C.\n" +
+      "Epatomegalia di 2 cm, splenomegalia modesta,\n" +
+      "linfonodi laterocervicali di 1,5 cm, mobili e non dolenti.\n" +
+      "Nessun segno di petecchie o lesioni cutanee.\n\n" +
+      "🧪 Esami di laboratorio:\n" +
+      "Hb: 11.2 g/dL\n" +
+      "GB: 3.200/mm³\n" +
+      "PLT: 130.000/mm³\n" +
+      "VES: 82 mm/h\n" +
+      "PCR: 10 mg/dL\n" +
+      "AST/ALT lievemente aumentate\n" +
+      "Sierologia HIV: negativa\n" +
+      "Test di Wright: negativo\n" +
+      "Test di Mantoux: negativo\n" +
+      "Giemsa su sangue periferico: negativo",
+                options: [
+                    "Febbre tifoide prolungata",
+                    "Leishmaniosi viscerale (Kala-azar)",
+                    "Linfoma di Hodgkin",
+                    "Mononucleosi infettiva cronica"
+                ],
+                correctAnswer: 1, // Indice dell'opzione corretta (parte da 0)
+                coordinates: "Vai in SALOTTO e cerca SOTTO IL DIVANO vicino al tavolino",
+                star: "⭐"
+            },
+            {
+                title: "Dolore toracico atipico",
+    description:
+      "🩺 Anamnesi:\n" +
+      "Donna di 58 anni, ipertesa in trattamento con ACE-inibitore, ex fumatrice (20 pacchetti/anno),\n" +
+      "senza storia nota di cardiopatia ischemica. Nessun diabete.\n\n" +
+      "Riferisce da 2 giorni un dolore toracico retrosternale, sordo, non irradiato, della durata di 20-30 minuti,\n" +
+      "non correlato con lo sforzo fisico e non alleviato dal riposo.\n" +
+      "Il dolore è comparso anche a riposo, soprattutto la sera.\n" +
+      "Assenza di dispnea o palpitazioni.\n\n" +
+      "🧑‍⚕️ Esame obiettivo:\n" +
+      "PA 130/85 mmHg, FC 78 bpm, SatO₂ 98% RA, T 36.8°C.\n" +
+      "Toni cardiaci regolari, non soffi. Polmoni liberi.\n" +
+      "Non edemi declivi, non giugulari turgide.\n\n" +
+      "🧪 Esami di laboratorio ed ECG:\n" +
+      "Troponina I lievemente aumentata (0.08 ng/mL, v.n. <0.04)\n" +
+      "ECG: sottoslivellamento del tratto ST nelle derivazioni inferiori, invertite T in V4-V6.\n" +
+      "Rx torace: normale.\n\n" +
+      "📋 Nota:\n" +
+      "La paziente riferisce un episodio simile alcuni mesi fa dopo un forte stress emotivo.",
+    options: [
+      "Angina stabile da sforzo",
+      "Pericardite acuta",
+      "Angina di Prinzmetal (vasospastica)",
+      "Sindrome di Takotsubo (cardiomiopatia da stress)"
+    ],
+                correctAnswer: 3,
+                coordinates: "Vai in CUCINA e apri il SECONDO CASSETTO da sinistra",
+                star: "⭐⭐"
+            },
+            {
+                title: "Cefalea improvvisa e rigidità nucale",
+    description:
+      "🩺 Anamnesi:\n" +
+      "Uomo di 47 anni, senza patologie croniche note, non fumatore.\n" +
+      "Riferisce la comparsa improvvisa, 1 ora fa, di una cefalea intensa, 'la peggiore della sua vita',\n" +
+      "localizzata occipitalmente, associata a nausea e vomito.\n" +
+      "La cefalea è insorta durante un rapporto sessuale.\n" +
+      "Nessun trauma recente. Nessuna febbre o segni infettivi.\n\n" +
+      "🧑‍⚕️ Esame obiettivo:\n" +
+      "PA 145/90 mmHg, FC 88 bpm, SatO₂ 99% RA.\n" +
+      "Paziente vigile ma sofferente, fotofobico, con rigidità nucale evidente.\n" +
+      "Nessun deficit motorio o sensitivo.\n" +
+      "Fondi oculari: papille lievemente iperemiche.\n\n" +
+      "🧪 Esami e imaging:\n" +
+      "TC cranio senza mezzo di contrasto: non dirimente.\n" +
+      "Liquor (puntura lombare): xantocromico, presenza di emazie e aumento di proteine.\n\n" +
+      "📋 Nota:\n" +
+      "Il paziente non assume anticoagulanti e non presenta ipertensione nota.",
+    options: [
+      "Emorragia subaracnoidea da rottura di aneurisma",
+      "Meningite virale acuta",
+      "Cefalea a grappolo",
+      "Emicrania con aura"
+    ],
+                correctAnswer: 0,
+                coordinates: "Vai in SALOTTO e guarda DIETRO LA TV, nella parte bassa",
+                star: "⭐⭐⭐"
+            },
+            {
+                title: "Cefalea invernale, famiglia sintomatica",
+  description:
+    "🩺 Anamnesi:\n" +
+    "Uomo di 36 anni, non fumatore, nessuna terapia cronica.\n" +
+    "Da stamattina cefalea sorda, vertigini, nausea e lieve confusione.\n" +
+    "Riferisce che anche la moglie e il figlio hanno cefalea e malessere.\n" +
+    "Ieri sera hanno tenuto accesa a lungo una stufa a gas in casa (finestre chiuse).\n\n" +
+    "🧑‍⚕️ Esame obiettivo:\n" +
+    "PA 120/75 mmHg, FC 104 bpm, FR 20/min, SatO₂ 99% in aria ambiente, T 36.7°C.\n" +
+    "Paziente vigile, lievemente rallentato, esame neurologico senza deficit focali.\n\n" +
+    "🧪 Esami:\n" +
+    "Emogas arterioso: PaO₂ 95 mmHg, pH 7.33, lattato 4.2 mmol/L.\n" +
+    "COHb (co-ossimetria): 22% (non fumatore).\n" +
+    "ECG: tachicardia sinusale; TC encefalo: negativa.\n\n" +
+    "📋 Nota:\n" +
+    "Nessuna esposizione nota ad alcol metilico; nessun disturbo visivo.",
+  options: [
+    "Influenza stagionale con disidratazione",
+    "Intossicazione da monossido di carbonio",
+    "Intossicazione da metanolo",
+    "Cefalea tensiva con iperventilazione"
+  ],
+  correctAnswer: 1, // Intossicazione da CO
+                coordinates: "Vai nella LIBRERIA e cerca sul TERZO SCAFFALE dall'alto",
+                star: "⭐⭐⭐⭐"
+            },
+            {
+                title: "Pancitopenia e splenomegalia",
+  description:
+    "🩺 Anamnesi:\n" +
+    "Uomo di 55 anni, non fumatore. Da alcuni mesi astenia, infezioni respiratorie ricorrenti\n" +
+    "e facilità ai lividi. Nessuna epatopatia nota, consumo alcolico modesto.\n\n" +
+    "🧑‍⚕️ Esame obiettivo:\n" +
+    "PA 118/72 mmHg, FC 88 bpm, T 37.4°C.\n" +
+    "Pallore cutaneo-mucose. Splenomegalia palpabile (4 cm sotto il costato sinistro), fegato nei limiti.\n" +
+    "Assenza di linfoadenopatie significative.\n\n" +
+    "🧪 Esami:\n" +
+    "Hb 10.1 g/dL · GB 2.1×10^3/µL (neutrofili 900/µL) · PLT 92×10^3/µL\n" +
+    "LDH lievemente ↑ · VES ↑ · Funzionalità epatica e renale nei limiti.\n" +
+    "Striscio periferico: linfociti atipici con proiezioni citoplasmatiche ('cellule capellute').\n" +
+    "Aspirato midollare: tentativo non diagnostico ('dry tap').\n\n" +
+    "📋 Nota:\n" +
+    "Flow cytometry: popolazione B CD19+ con espressione di CD11c, CD25, CD103.",
+  options: [
+    "Leucemia linfatica cronica (LLC)",
+    "Leucemia a cellule capellute (Hairy Cell Leukemia)",
+    "Anemia aplastica",
+    "Ipersplenismo secondario a cirrosi"
+  ],
+  correctAnswer: 1, // Hairy Cell Leukemia
+                coordinates: "Vai in CAMERA DA LETTO e apri l'ARMADIO, cerca nel ripiano in alto",
+                star: "⭐⭐⭐⭐⭐"
+            },
+            {
+                title: "Confusione e iponatriemia euvolemica",
+  description:
+    "🩺 Anamnesi:\n" +
+    "Uomo di 68 anni, ex fumatore (40 pacchetti/anno), ipertensione in terapia con calcio-antagonista.\n" +
+    "Da una settimana cefalea, nausea, lieve confusione e instabilità alla marcia.\n" +
+    "Tosse secca da alcuni mesi e calo ponderale non quantificato. Nessun diuretico, nessuna terapia SSRI.\n\n" +
+    "🧑‍⚕️ Esame obiettivo:\n" +
+    "PA 125/78 mmHg, FC 84 bpm, FR 16/min, SatO₂ 97% RA, T 36.9°C.\n" +
+    "Mucose umide, assenza di edemi, turgore giugulare normale. Cute e mucose non iperpigmentate.\n" +
+    "Nessun segno di disidratazione marcata. Stato mentale: rallentato ma orientato.\n\n" +
+    "🧪 Esami:\n" +
+    "Na⁺ 118 mEq/L · K⁺ 4.3 mEq/L · Cl⁻ 86 mEq/L · Creatinina 0.8 mg/dL · Glicemia 98 mg/dL.\n" +
+    "Osmolalità sierica 255 mOsm/kg (↓); osmolalità urinaria 520 mOsm/kg (↑ inappropriata).\n" +
+    "Na⁺ urinario 62 mEq/L (↑). Acido urico sierico basso.\n" +
+    "TSH e FT4 nei limiti. Cortisolo 8:00: 17 µg/dL.\n\n" +
+    "🖼️ Imaging:\n" +
+    "Rx torace: opacità/massa ilare destra di 3.5 cm; TC torace in programmazione.\n\n" +
+    "📋 Nota:\n" +
+    "I sintomi sono insorti gradualmente; nessuna poliuria, nessuna compulsione a bere.",
+  options: [
+    "SIADH secondaria a carcinoma polmonare a piccole cellule",
+    "Polidipsia psicogena",
+    "Iponatriemia ipovolemica da diuretici tiazidici",
+    "Insufficienza surrenalica primaria (morbo di Addison)"
+  ],
+  correctAnswer: 0, // SIADH paraneoplastica
+                coordinates: "Vai sul BALCONE e cerca nel VASO GRANDE delle piante grasse",
+                star: "⭐⭐⭐⭐⭐⭐"
+            },
+            {
+                title: "Anemia sideropenica e sangue occulto",
+  description:
+    "🩺 Anamnesi:\n" +
+    "Uomo di 66 anni, iperteso ben controllato. Da 2–3 mesi astenia, dispnea da sforzo lieve,\n" +
+    "scarso appetito e calo ponderale di ~3 kg. Riferisce alvo tendenzialmente più 'molle',\n" +
+    "con alvo irregolare ma senza sangue visibile nelle feci.\n" +
+    "Assunzione di FANS episodica per gonalgia. Non storia di sanguinamenti evidenti.\n\n" +
+    "🧑‍⚕️ Esame obiettivo:\n" +
+    "PA 128/76 mmHg, FC 92 bpm, T 36.7°C. Pallore cutaneo-mucose.\n" +
+    "Addome trattabile, non dolente; non epato-splenomegalia palpabile.\n" +
+    "Explorazione rettale: negativa per sangue fresco.\n\n" +
+    "🧪 Esami di laboratorio:\n" +
+    "Hb 9.6 g/dL · MCV 72 fL · MCHC ↓ · Reticolociti normali.\n" +
+    "Ferritina 8 ng/mL (↓), Sideremia 25 µg/dL (↓), Transferrina 360 mg/dL (↑),\n" +
+    "Indice di saturazione 7% (↓). VES lievemente ↑.\n" +
+    "Test sangue occulto fecale: positivo su 2/3 campioni.\n\n" +
+    "🖼️ Indagini/Imaging:\n" +
+    "EGDS: gastrite antrale lieve, H. pylori negativo, nessun sanguinamento.\n" +
+    "Ecografia addome: nella norma. Colonscopia programmata.\n\n" +
+    "📋 Nota:\n" +
+    "Nessuna diarrea cronica, nessun dolore addominale colico; familiarità negativa per IBD.",
+  options: [
+    "Malattia celiaca non diagnosticata",
+    "Emorroidi interne sanguinanti",
+    "Carcinoma del colon destro",
+    "Angiodisplasia del cieco"
+  ],
+  correctAnswer: 2, 
+                coordinates: "Vai in BAGNO e apri l'ARMADIETTO DELLO SPECCHIO, ripiano centrale",
+                star: "⭐⭐⭐⭐⭐⭐⭐"
+            }
+        ];
+
+        let currentCase = 0;
+        let collectedBalls = 0;
+
+        function startHunt() {
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('caseScreen').style.display = 'block';
+            loadCase(0);
+        }
+
+        function loadCase(caseIndex) {
+            const caseData = cases[caseIndex];
+            document.getElementById('caseNumber').textContent = caseIndex + 1;
+            document.getElementById('caseTitle').textContent = caseData.title;
+            document.getElementById('caseDescription').textContent = caseData.description;
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'none';
+            
+            // Crea le opzioni a scelta multipla
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = '';
+            
+            caseData.options.forEach((option, index) => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'option';
+                optionDiv.onclick = function() {
+                    selectOption(index);
+                };
+                
+                optionDiv.innerHTML = `
+                    <input type="radio" name="answer" id="option${index}" value="${index}">
+                    <label for="option${index}">${option}</label>
+                `;
+                
+                optionsContainer.appendChild(optionDiv);
+            });
+        }
+        
+        function selectOption(index) {
+            // Rimuovi la classe selected da tutte le opzioni
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Aggiungi la classe selected all'opzione cliccata
+            document.querySelectorAll('.option')[index].classList.add('selected');
+            
+            // Seleziona il radio button
+            document.getElementById(`option${index}`).checked = true;
+        }
+
+        function checkAnswer() {
+            const selectedOption = document.querySelector('input[name="answer"]:checked');
+            
+            if (!selectedOption) {
+                document.getElementById('errorMessage').textContent = 'Seleziona una risposta prima di procedere!';
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('successMessage').style.display = 'none';
+                return;
+            }
+            
+            const selectedIndex = parseInt(selectedOption.value);
+            const correctIndex = cases[currentCase].correctAnswer;
+            
+            if (selectedIndex === correctIndex) {
+                // Risposta corretta
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('errorMessage').style.display = 'none';
+                
+                setTimeout(() => {
+                    showRadar();
+                }, 1500);
+            } else {
+                // Risposta sbagliata
+                document.getElementById('errorMessage').textContent = 'Risposta non corretta. Riprova!';
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('successMessage').style.display = 'none';
+            }
+        }
+
+        function showRadar() {
+            collectedBalls++;
+            document.getElementById('ballsCollected').textContent = collectedBalls;
+            
+            document.getElementById('caseScreen').style.display = 'none';
+            document.getElementById('radarScreen').style.display = 'block';
+            
+            document.getElementById('currentStar').textContent = cases[currentCase].star;
+            document.getElementById('ballNumber').textContent = currentCase + 1;
+            document.getElementById('coordinates').textContent = cases[currentCase].coordinates;
+        }
+
+        function nextCase() {
+            currentCase++;
+            
+            if (currentCase >= cases.length) {
+                // Tutte le sfere trovate!
+                document.getElementById('radarScreen').style.display = 'none';
+                document.getElementById('completionScreen').style.display = 'block';
+            } else {
+                // Prossimo caso
+                document.getElementById('radarScreen').style.display = 'none';
+                document.getElementById('caseScreen').style.display = 'block';
+                loadCase(currentCase);
+            }
+        }
+
+        // Gestione click sulle opzioni
+        document.addEventListener('DOMContentLoaded', function() {
+            // Il codice di gestione delle opzioni è già nelle funzioni loadCase e selectOption
+        });
+    </script>
+</body>
+</html>
