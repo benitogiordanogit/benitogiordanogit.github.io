@@ -437,12 +437,15 @@
 
         .star {
             position: absolute;
-            color: #C41E3A;
-            font-size: 24px;
-            text-shadow: 
-                0 0 5px rgba(196, 30, 58, 0.8),
-                0 0 10px rgba(196, 30, 58, 0.5);
+            width: 35px;
+            height: 35px;
             animation: starTwinkle 1s infinite alternate;
+        }
+        
+        .star svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
         }
 
         @keyframes starTwinkle {
@@ -1462,6 +1465,9 @@
             document.getElementById('caseScreen').style.display = 'none';
             document.getElementById('radarScreen').style.display = 'block';
             
+            // Scroll istantaneo in alto (senza animazione)
+            window.scrollTo(0, 0);
+            
             // Riproduce il suono del radar
             playRadarSound();
             
@@ -1469,49 +1475,49 @@
             const starString = cases[currentCase].star;
             starContainer.innerHTML = '';
             
-            // Posizioni predefinite per le stelle (in percentuale, disposte in modo compatto e centrale come nelle vere Dragon Ball)
+            // Posizioni predefinite per le stelle (ben centrate e distanziate)
             const starPositions = [
                 [
-                    {top: '50%', left: '50%'} // 1 stella al centro
+                    {top: '50%', left: '50%'} // 1 stella: centrata
                 ],
                 [
-                    {top: '42%', left: '46%'}, // 2 stelle vicine in diagonale
-                    {top: '58%', left: '54%'}
+                    {top: '40%', left: '40%'}, // 2 stelle: diagonale ben centrata
+                    {top: '60%', left: '60%'}
                 ],
                 [
-                    {top: '38%', left: '50%'}, // 3 stelle triangolo compatto
-                    {top: '56%', left: '42%'},
-                    {top: '56%', left: '58%'}
+                    {top: '38%', left: '50%'}, // 3 stelle: triangolo centrato
+                    {top: '62%', left: '40%'},
+                    {top: '62%', left: '60%'}
                 ],
                 [
-                    {top: '42%', left: '42%'}, // 4 stelle quadrato compatto
-                    {top: '42%', left: '58%'},
-                    {top: '58%', left: '42%'},
-                    {top: '58%', left: '58%'}
+                    {top: '40%', left: '50%'}, // 4 stelle: rombo centrato
+                    {top: '50%', left: '38%'},
+                    {top: '50%', left: '62%'},
+                    {top: '60%', left: '50%'}
                 ],
                 [
-                    {top: '35%', left: '50%'}, // 5 stelle: 1 in alto, 4 sotto a croce
-                    {top: '52%', left: '38%'},
-                    {top: '52%', left: '62%'},
-                    {top: '65%', left: '44%'},
-                    {top: '65%', left: '56%'}
+                    {top: '50%', left: '50%'}, // 5 stelle: croce centrata
+                    {top: '35%', left: '38%'},
+                    {top: '35%', left: '62%'},
+                    {top: '65%', left: '38%'},
+                    {top: '65%', left: '62%'}
                 ],
                 [
-                    {top: '38%', left: '42%'}, // 6 stelle: 2 sopra, 2 centro, 2 sotto
-                    {top: '38%', left: '58%'},
-                    {top: '50%', left: '35%'},
-                    {top: '50%', left: '65%'},
-                    {top: '62%', left: '42%'},
-                    {top: '62%', left: '58%'}
+                    {top: '35%', left: '42%'}, // 6 stelle: due colonne centrate
+                    {top: '50%', left: '42%'},
+                    {top: '65%', left: '42%'},
+                    {top: '35%', left: '58%'},
+                    {top: '50%', left: '58%'},
+                    {top: '65%', left: '58%'}
                 ],
                 [
-                    {top: '32%', left: '50%'}, // 7 stelle: 1 in alto, 2-2-2 sotto
-                    {top: '45%', left: '40%'},
-                    {top: '45%', left: '60%'},
-                    {top: '56%', left: '35%'},
-                    {top: '56%', left: '65%'},
-                    {top: '68%', left: '44%'},
-                    {top: '68%', left: '56%'}
+                    {top: '50%', left: '50%'}, // 7 stelle: cerchio centrato + centro
+                    {top: '30%', left: '50%'},
+                    {top: '38%', left: '68%'},
+                    {top: '62%', left: '68%'},
+                    {top: '70%', left: '50%'},
+                    {top: '62%', left: '32%'},
+                    {top: '38%', left: '32%'}
                 ]
             ];
             
@@ -1525,9 +1531,26 @@
             const positions = starPositions[starCount - 1] || [];
             
             for (let i = 0; i < starCount; i++) {
-                const star = document.createElement('span');
+                const star = document.createElement('div');
                 star.className = 'star';
-                star.textContent = '⭐';
+                
+                // Crea una stella SVG in stile Dragon Ball con colore rosso-arancione
+                star.innerHTML = `
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <radialGradient id="starGradient-${i}" cx="30%" cy="30%">
+                                <stop offset="0%" style="stop-color:#FF6B47;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#E53935;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#C62828;stop-opacity:1" />
+                            </radialGradient>
+                        </defs>
+                        <polygon points="50,10 61,38 90,38 68,55 76,85 50,66 24,85 32,55 10,38 39,38" 
+                                 fill="url(#starGradient-${i})" 
+                                 stroke="#B71C1C" 
+                                 stroke-width="2.5"
+                                 stroke-linejoin="miter"/>
+                    </svg>
+                `;
                 
                 if (positions[i]) {
                     star.style.top = positions[i].top;
@@ -1663,6 +1686,10 @@
         function summonDragon() {
             document.getElementById('finalCaseScreen').style.display = 'none';
             document.getElementById('dragonScreen').style.display = 'block';
+            
+            // Scroll istantaneo in alto (senza animazione)
+            window.scrollTo(0, 0);
+            
             document.getElementById('finalCoordinates').textContent = finalCase.coordinates;
         }
     </script>
