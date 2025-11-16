@@ -1098,234 +1098,268 @@
     </div>
 
     <script>
-        const cases = [
+                const cases = [
             {
-                title: "Tosse cronica e calo ponderale",
+                title: "Caso 1",
                 description:
                     "🩺 Anamnesi:\n" +
-                    "Uomo di 42 anni giunge per tosse persistente da 3 mesi, " +
-                    "produttiva con escreato striato di sangue (emoftoe lieve), febbricola serale, sudorazione notturna e calo ponderale di circa 6 kg.\n" +
-                    "Non ha comorbilità note. Riferisce contatto prolungato con un parente affetto da TBC polmonare 6 mesi fa.\n\n" +
+                    "Uomo di 58 anni, iperteso ben controllato, ex fumatore (25 pack-years), con dislipidemia in terapia.\n" +
+                    "Da circa 3 settimane lamenta astenia progressiva, lieve dispnea da sforzo e dolore toracico atipico, non chiaramente correlato allo sforzo.\n" +
+                    "Riferisce calo ponderale non intenzionale (~4 kg in 2 mesi) e due episodi di febbricola serale.\n\n" +
                     "🧑‍⚕️ Esame obiettivo:\n" +
-                    "PA 115/70 mmHg, FC 92 bpm, T 37.8°C. Torace: rumori aspri al campo medio-superiore destro, rantoli crepitanti.\n" +
-                    "Paziente magro, lievemente pallido; nessun altro segno focale.\n\n" +
-                    "🧪 Esami:\n" +
-                    "Rx torace: opacità nodulare apicale destra con cavitazione, infiltrati multipli.\n" +
-                    "Esame diretto dell'espettorato: bacilli alcool-acido resistenti (BAAR) positivi.\n" +
-                    "Test Mantoux: positivo (> 15 mm).\n\n" +
+                    "PA 125/75 mmHg, FC 96 bpm, SatO₂ 96% RA.\n" +
+                    "Soffio sistolico lieve all’apice.\n" +
+                    "Sub-ittero sclero-cutaneo.\n" +
+                    "Lieve epatomegalia e splenomegalia.\n" +
+                    "Nessun edema declive.\n\n" +
+                    "🧪 Esami di laboratorio:\n" +
+                    "Hb 10.3 g/dL (normocitica), GB 8.400/mm³, PLT 150.000/mm³.\n" +
+                    "PCR 3.5 mg/dL, VES 60 mm/h.\n" +
+                    "LDH 380 U/L (↑).\n" +
+                    "AST/ALT nei limiti.\n" +
+                    "Bilirubina tot 2.3 mg/dL (diretta 0.8).\n" +
+                    "Troponina lievemente ↑, ma stabile su controlli seriati.\n\n" +
+                    "🖼️ Imaging:\n" +
+                    "ECG: tachicardia sinusale, lievi anomalie aspecifiche del tratto ST-T.\n" +
+                    "Rx torace: modesto ingrandimento dell’ombra cardiaca; lieve velatura basale dx.\n" +
+                    "Ecocardiogramma: modesto versamento pericardico (9 mm), funzione sistolica conservata.\n" +
+                    "Ecografia addome: epatosplenomegalia, senza lesioni focali evidenti.\n\n" +
                     "📋 Nota:\n" +
-                    "Il paziente è non fumatore; nessuna storia di asma o BPCO.",
+                    "Non assunzione recente di farmaci nuovi o tossici noti; nessuna storia nota di malattie autoimmuni.",
                 options: [
-                    "Polmonite batterica acquisita in comunità",
-                    "Tubercolosi polmonare attiva",
-                    "Carcinoma polmonare",
-                    "Bronchiectasie con sovrainfezione"
+                    "Pericardite subacuta secondaria a connettivite autoimmune",
+                    "Linfoma non-Hodgkin con interessamento sistemico",
+                    "Emolisi cronica autoimmune con versamento pericardico reattivo",
+                    "Infezione viral-like subacuta con interessamento pericardico"
                 ],
                 correctAnswer: 1,
-                coordinates: "Vai in CUCINA e apri il CASSETTO accanto al frigorifero",
+                coordinates: "Vai in CUCINA e controlla il CASSETTO accanto al frigorifero",
                 star: "⭐"
             },
             {
-                title: "Dolore addominale acuto e vomito",
+                title: "Caso 2",
                 description:
                     "🩺 Anamnesi:\n" +
-                    "Donna di 38 anni, nota per colelitiasi asintomatica, giunge in PS per dolore epigastrico intenso a sbarra, " +
-                    "insorto 6 ore fa dopo una cena abbondante e ricca di grassi. Nausea e vomito ripetuto, nessun miglioramento con antiacidi.\n" +
-                    "Assume alcol occasionalmente; nega traumi recenti.\n\n" +
+                    "Donna di 35 anni, nessuna comorbilità rilevante, lamenta da alcuni mesi artralgie migranti a mani, polsi e ginocchia,\n" +
+                    "accentuate al mattino con lieve rigidità mattutina (30–40 minuti). Riferisce anche stanchezza, rash fugace al volto dopo esposizione solare\n" +
+                    "e due episodi di ulcere orali non dolorose. Non riferisce abuso di FANS.\n\n" +
                     "🧑‍⚕️ Esame obiettivo:\n" +
-                    "PA 108/65 mmHg, FC 110 bpm, FR 22/min, T 38.1°C.\n" +
-                    "Addome: dolorabilità intensa in epigastrio, lieve distensione, segni di difesa ma non peritonismo franco.\n" +
-                    "Peristalsi ridotta. Gibbi renali negativi.\n\n" +
-                    "🧪 Esami:\n" +
-                    "Amilasi sierica 850 U/L (VN <100), lipasi 1200 U/L (VN <60).\n" +
-                    "Leucocitosi 14.5×10^3/µL, PCR 12 mg/dL.\n" +
-                    "Glicemia 145 mg/dL, LDH 280 U/L, AST/ALT lievemente aumentate.\n" +
-                    "Ecografia addome: colecisti con calcoli; pancreas mal visualizzabile per meteorismo.\n\n" +
+                    "PA 110/70 mmHg, FC 88 bpm, T 37.3°C.\n" +
+                    "Artriti lievi, simmetriche, non deformanti alle MCF e alle interfalangee prossimali.\n" +
+                    "Lieve eritema malare, non nettamente delimitato.\n" +
+                    "Assenza di linfoadenopatie importanti; nulla di significativo a carico di cuore e polmoni.\n\n" +
+                    "🧪 Esami di laboratorio:\n" +
+                    "Hb 11.2 g/dL, GB 3.4×10^3/µL, PLT 135×10^3/µL (pancitopenia lieve).\n" +
+                    "VES 55 mm/h, PCR moderatamente ↑.\n" +
+                    "Creatinina 0.9 mg/dL, ma esame urine: proteinuria 0.8 g/24h, microematuria, pochi cilindri eritrocitari.\n" +
+                    "ANA positivi (1:320, pattern granulare), anti-dsDNA debolmente positivi, C3 e C4 lievemente ridotti.\n" +
+                    "FR (fattore reumatoide) positivo a basso titolo, anti-CCP negativi.\n\n" +
                     "📋 Nota:\n" +
-                    "Nessuna storia di ipertrigliceridemia; non uso cronico di farmaci.",
+                    "Nessuna storia di infezioni recenti importanti; non uso di idralazina o procainamide.",
                 options: [
-                    "Gastrite acuta",
-                    "Pancreatite acuta (presumibilmente biliare)",
-                    "Ulcera peptica perforata",
-                    "Colecistite acuta"
+                    "Lupus eritematoso sistemico con nefropatia iniziale",
+                    "Artrite reumatoide sieropositiva in fase precoce",
+                    "Dermatomiosite con interessamento articolare",
+                    "Vasculite ANCA-associata (poliangioite microscopica)"
                 ],
-                correctAnswer: 1,
-                coordinates: "Vai in SALOTTO, cerca dietro il CUSCINO del divano",
+                correctAnswer: 0,
+                coordinates: "Vai in SALOTTO, cerca dietro il CUSCINO centrale del divano",
                 star: "⭐⭐"
             },
             {
-                title: "Dispnea improvvisa e asimmetria toracica",
+                title: "Caso 3",
                 description:
                     "🩺 Anamnesi:\n" +
-                    "Uomo di 28 anni, alto e magro (habitus longilineo), fumatore (10 sigarette/die da 5 anni),\n" +
-                    "si presenta in PS per dispnea ingravescente e dolore toracico acuto destro a \"pugnalata\" insorti bruscamente durante sforzo fisico.\n" +
-                    "Nega traumi, infezioni recenti o patologie polmonari note.\n\n" +
+                    "Donna di 52 anni, BMI 26, non fumatrice. Da alcuni mesi lamenta intenso prurito, soprattutto notturno,\n" +
+                    "astenia e lieve ittero insorto progressivamente. Non riferisce abuso di alcol, né uso cronico di farmaci epatotossici.\n" +
+                    "Storia di ipotiroidismo autoimmune in terapia sostitutiva.\n\n" +
                     "🧑‍⚕️ Esame obiettivo:\n" +
-                    "PA 100/60 mmHg, FC 120 bpm, FR 28/min, SatO₂ 88% in aria ambiente, T 36.5°C.\n" +
-                    "Torace: emitorace destro espanso, ipoespansibile, FVT e MV assenti, ipertimpanismo.\n" +
-                    "Turgore giugulare presente. Paziente agitato, tachipnoico, sudato.\n\n" +
-                    "🧪 Esami:\n" +
-                    "Emogas arterioso: ipossiemia (PaO₂ 60 mmHg), ipocapnia lieve.\n" +
-                    "Rx torace: presenza di aria libera nello spazio pleurico destro con collasso polmonare completo;\n" +
-                    "deviazione mediastinica controlaterale; emidiaframma destro appiattito.\n\n" +
+                    "PA 120/75 mmHg, FC 82 bpm.\n" +
+                    "Ittero lieve delle sclere, escoriazioni da grattamento a tronco e arti.\n" +
+                    "Fegato palpabile 2 cm sotto il costato destro, non francamente dolente; milza non palpabile.\n\n" +
+                    "🧪 Esami di laboratorio:\n" +
+                    "Bilirubina tot 3.1 mg/dL (diretta prevalente), ALP e GGT significativamente ↑, transaminasi solo moderatamente ↑.\n" +
+                    "Albumina e INR normali.\n" +
+                    "AMA (anticorpi anti-mitocondrio) positivi a titolo medio; ANA debolmente positivi.\n" +
+                    "IgM sieriche lievemente aumentate.\n\n" +
+                    "🖼️ Imaging:\n" +
+                    "Ecografia addome: fegato di dimensioni ai limiti superiori, vie biliari intra ed extraepatiche non dilatate, colecisti senza calcoli.\n" +
+                    "Colangio-RM in programmazione.\n\n" +
                     "📋 Nota:\n" +
-                    "Nessun precedente episodio simile; nessuna malattia polmonare pregressa nota.",
+                    "Nessuna storia di IBD; familiarità negativa per colangite sclerosante primitiva.",
                 options: [
-                    "Infarto miocardico acuto",
-                    "Embolia polmonare massiva",
-                    "Pneumotorace iperteso",
-                    "Tamponamento cardiaco"
+                    "Colangite biliare primitiva",
+                    "Colangite sclerosante primitiva",
+                    "Steatoepatite non alcolica (NASH) evoluta",
+                    "Epatite virale cronica B"
                 ],
-                correctAnswer: 2,
-                coordinates: "Vai in STUDIO e cerca nel CASSETTO della scrivania",
+                correctAnswer: 0,
+                coordinates: "Vai nello STUDIO e controlla nel CASSETTO della scrivania",
                 star: "⭐⭐⭐"
             },
             {
-                title: "Cefalea, nausea e uso di stufa a legna",
+                title: "Caso 4",
                 description:
                     "🩺 Anamnesi:\n" +
-                    "Famiglia di 4 persone (genitori di 40 e 38 anni, figli di 12 e 8 anni) si presenta in PS dopo essere stata trovata " +
-                    "in casa con sintomi di cefalea intensa, nausea, vertigini, confusione lieve e astenia marcata.\n" +
-                    "La sera prima hanno utilizzato una stufa a legna in ambiente poco ventilato per diverse ore.\n" +
-                    "Tutti i membri della famiglia presentano sintomi simili ma di intensità variabile.\n\n" +
-                    "🧑‍⚕️ Esame obiettivo (padre - caso indice):\n" +
-                    "PA 125/80 mmHg, FC 105 bpm, FR 20/min, SatO₂ 98% RA (pulsossimetria), T 36.8°C.\n" +
-                    "Paziente vigile, lievemente rallentato, esame neurologico senza deficit focali.\n\n" +
-                    "🧪 Esami:\n" +
-                    "Emogas arterioso: PaO₂ 95 mmHg, pH 7.33, lattato 4.2 mmol/L.\n" +
-                    "COHb (co-ossimetria): 22% (non fumatore).\n" +
-                    "ECG: tachicardia sinusale; TC encefalo: negativa.\n\n" +
+                    "Uomo di 64 anni, iperteso, ex fumatore. Da alcuni mesi lamenta dispnea da sforzo progressiva e dolore toracico costrittivo\n" +
+                    "sotto sforzo intenso, che regredisce con il riposo. Riferisce un episodio sincopale durante rapida salita di scale.\n" +
+                    "Nega pregressi infarti noti.\n\n" +
+                    "🧑‍⚕️ Esame obiettivo:\n" +
+                    "PA 135/80 mmHg, FC 78 bpm.\n" +
+                    "All’auscultazione cardiaca: soffio sistolico rude, eiettivo, massimo al II spazio intercostale dx, irradiato ai vasi del collo;\n" +
+                    "tonalità ridotta del II tono aortico.\n" +
+                    "Polmoni: MV conservato, senza rantoli significativi.\n\n" +
+                    "🧪 Esami di laboratorio:\n" +
+                    "Emocromo, elettroliti e funzionalità renale nella norma.\n" +
+                    "Troponina nella norma, NT-proBNP moderatamente ↑.\n\n" +
+                    "🖼️ Esami strumentali:\n" +
+                    "ECG: ipertrofia ventricolare sinistra con alterazioni aspecifiche del tratto ST-T.\n" +
+                    "Rx torace: profilo cardiaco lievemente ingrandito, aorta ascendente calcifica.\n" +
+                    "Ecocardiogramma: ventricolo sinistro ipertrofico, FE conservata; gradiente transvalvolare aortico aumentato,\n" +
+                    "valvola aortica ispessita e calcifica, area valvolare significativamente ridotta, ma non sono riportati valori numerici precisi.\n\n" +
                     "📋 Nota:\n" +
-                    "Nessuna esposizione nota ad alcol metilico; nessun disturbo visivo.",
+                    "Nessuna storia di TEP recente; non uso di cocaina o altre sostanze.",
                 options: [
-                    "Influenza stagionale con disidratazione",
-                    "Intossicazione da monossido di carbonio",
-                    "Intossicazione da metanolo",
-                    "Cefalea tensiva con iperventilazione"
+                    "Cardiomiopatia ipertrofica ostruttiva",
+                    "Stenosi aortica severa sintomatica",
+                    "Angina stabile su coronaropatia trivasale",
+                    "Ipertensione polmonare primaria"
                 ],
                 correctAnswer: 1,
-                coordinates: "Vai nella LIBRERIA e cerca sul TERZO SCAFFALE dall'alto",
+                coordinates: "Vai nella LIBRERIA e controlla il TERZO SCAFFALE dall’alto",
                 star: "⭐⭐⭐⭐"
             },
             {
-                title: "Pancitopenia e splenomegalia",
+                title: "Caso 5",
                 description:
                     "🩺 Anamnesi:\n" +
-                    "Uomo di 55 anni, non fumatore. Da alcuni mesi astenia, infezioni respiratorie ricorrenti " +
-                    "e facilità ai lividi. Nessuna epatopatia nota, consumo alcolico modesto.\n\n" +
+                    "Uomo di 69 anni, iperteso, ex fumatore. Da alcuni mesi lamenta astenia, ridotta tolleranza allo sforzo\n" +
+                    "e modesto calo ponderale (~3 kg). Riferisce alvo irregolare, con feci talvolta più molli del solito,\n" +
+                    "senza sangue rosso visibile. Uso sporadico di FANS per gonalgia.\n\n" +
                     "🧑‍⚕️ Esame obiettivo:\n" +
-                    "PA 118/72 mmHg, FC 88 bpm, T 37.4°C.\n" +
-                    "Pallore cutaneo-mucose. Splenomegalia palpabile (4 cm sotto il costato sinistro), fegato nei limiti.\n" +
-                    "Assenza di linfoadenopatie significative.\n\n" +
-                    "🧪 Esami:\n" +
-                    "Hb 10.1 g/dL · GB 2.1×10^3/µL (neutrofili 900/µL) · PLT 92×10^3/µL\n" +
-                    "LDH lievemente ↑ · VES ↑ · Funzionalità epatica e renale nei limiti.\n" +
-                    "Striscio periferico: linfociti atipici con proiezioni citoplasmatiche.\n" +
-                    "Aspirato midollare: tentativo non diagnostico ('dry tap').\n\n" +
+                    "PA 130/78 mmHg, FC 90 bpm.\n" +
+                    "Pallore cutaneo-mucose, addome trattabile, non dolente, senza masse palpabili.\n" +
+                    "Esplorazione rettale: negativa per sangue fresco.\n\n" +
+                    "🧪 Esami di laboratorio:\n" +
+                    "Hb 9.2 g/dL, MCV 70 fL, MCHC ↓.\n" +
+                    "Ferritina 9 ng/mL (↓), sideremia ↓, transferrina ↑, saturazione della transferrina ↓.\n" +
+                    "VES lievemente ↑, PCR normale.\n" +
+                    "Test del sangue occulto fecale: positivo in 2 campioni su 3.\n\n" +
+                    "🖼️ Indagini strumentali:\n" +
+                    "EGDS: solo gastrite cronica lieve, H. pylori negativo, nessun sanguinamento evidente.\n" +
+                    "Ecografia addome: fegato e milza nella norma, nessun versamento libero.\n" +
+                    "Colonscopia in corso di programmazione (non ancora eseguita).\n\n" +
                     "📋 Nota:\n" +
-                    "Flow cytometry: popolazione B CD19+ con espressione di CD11c, CD25, CD103.",
+                    "Nessuna storia di malassorbimento nota; familiarità negativa per IBD.",
                 options: [
-                    "Leucemia linfatica cronica (LLC)",
-                    "Leucemia a cellule capellute (Hairy Cell Leukemia)",
-                    "Anemia aplastica",
-                    "Ipersplenismo secondario a cirrosi"
+                    "Malattia celiaca non diagnosticata",
+                    "Carcinoma del colon destro",
+                    "Emorroidi interne sanguinanti",
+                    "Angiodisplasia del tratto gastrointestinale distale"
                 ],
                 correctAnswer: 1,
-                coordinates: "Vai in CAMERA DA LETTO e apri l'ARMADIO, cerca nel ripiano in alto",
+                coordinates: "Vai in CAMERA DA LETTO e guarda nel RIPIANO ALTO dell’ARMADIO",
                 star: "⭐⭐⭐⭐⭐"
             },
             {
-                title: "Confusione e iponatriemia euvolemica",
+                title: "Caso 6",
                 description:
                     "🩺 Anamnesi:\n" +
-                    "Uomo di 68 anni, ex fumatore (40 pacchetti/anno), ipertensione in terapia con calcio-antagonista.\n" +
-                    "Da una settimana cefalea, nausea, lieve confusione e instabilità alla marcia.\n" +
-                    "Tosse secca da alcuni mesi e calo ponderale non quantificato. Nessun diuretico, nessuna terapia SSRI.\n\n" +
+                    "Uomo di 70 anni, ex fumatore (45 pack-years), iperteso in terapia. Da circa 10 giorni lamenta cefalea, nausea,\n" +
+                    "lieve confusione e talvolta instabilità alla marcia. Riferisce calo ponderale negli ultimi mesi e tosse secca persistente.\n" +
+                    "Nessun diuretico in terapia, nessun SSRI, nessun recente cambiamento farmacologico.\n\n" +
                     "🧑‍⚕️ Esame obiettivo:\n" +
-                    "PA 125/78 mmHg, FC 84 bpm, FR 16/min, SatO₂ 97% RA, T 36.9°C.\n" +
-                    "Mucose umide, assenza di edemi, turgore giugulare normale. Cute e mucose non iperpigmentate.\n" +
-                    "Nessun segno di disidratazione marcata. Stato mentale: rallentato ma orientato.\n\n" +
-                    "🧪 Esami:\n" +
-                    "Na⁺ 118 mEq/L · K⁺ 4.3 mEq/L · Cl⁻ 86 mEq/L · Creatinina 0.8 mg/dL · Glicemia 98 mg/dL.\n" +
-                    "Osmolalità sierica 255 mOsm/kg (↓); osmolalità urinaria 520 mOsm/kg (↑ inappropriata).\n" +
-                    "Na⁺ urinario 62 mEq/L (↑). Acido urico sierico basso.\n" +
-                    "TSH e FT4 nei limiti. Cortisolo 8:00: 17 µg/dL.\n\n" +
+                    "PA 120/76 mmHg, FC 82 bpm, SatO₂ 97% RA.\n" +
+                    "Mucose umide, assenza di edemi, turgore giugulare normale.\n" +
+                    "Non vi sono segni evidenti di disidratazione marcata.\n" +
+                    "Stato mentale: rallentato ma orientato.\n\n" +
+                    "🧪 Esami di laboratorio:\n" +
+                    "Na⁺ 117 mEq/L, K⁺ 4.1 mEq/L, creatinina 0.9 mg/dL.\n" +
+                    "Osmolalità sierica 254 mOsm/kg (↓), osmolalità urinaria 520 mOsm/kg (↑ inappropriata).\n" +
+                    "Na⁺ urinario 60 mEq/L (↑), acido urico sierico basso.\n" +
+                    "TSH e FT4 nei limiti; cortisolo basale nei limiti.\n\n" +
                     "🖼️ Imaging:\n" +
-                    "Rx torace: opacità/massa ilare destra di 3.5 cm; TC torace in programmazione.\n\n" +
+                    "Rx torace: opacità ilare destra sospetta per massa; TC torace in programmazione.\n\n" +
                     "📋 Nota:\n" +
-                    "I sintomi sono insorti gradualmente; nessuna poliuria, nessuna compulsione a bere.",
+                    "Nessun segno clinico di insufficienza surrenalica primaria; nessuna polidipsia psicogena riferita.",
                 options: [
                     "SIADH secondaria a carcinoma polmonare a piccole cellule",
                     "Polidipsia psicogena",
-                    "Iponatriemia ipovolemica da diuretici tiazidici",
+                    "Iponatriemia ipovolemica da perdite gastrointestinali",
                     "Insufficienza surrenalica primaria (morbo di Addison)"
                 ],
                 correctAnswer: 0,
-                coordinates: "Vai sul BALCONE e cerca nel VASO GRANDE delle piante grasse",
+                coordinates: "Vai sul BALCONE e cerca nel VASO più grande",
                 star: "⭐⭐⭐⭐⭐⭐"
             },
             {
-                title: "Anemia sideropenica e sangue occulto",
+                title: "Caso 7",
                 description:
                     "🩺 Anamnesi:\n" +
-                    "Uomo di 66 anni, iperteso ben controllato. Da 2–3 mesi astenia, dispnea da sforzo lieve,\n" +
-                    "scarso appetito e calo ponderale di ~3 kg. Riferisce alvo tendenzialmente più 'molle', " +
-                    "con alvo irregolare ma senza sangue visibile nelle feci.\n" +
-                    "Assunzione di FANS episodica per gonalgia. Non storia di sanguinamenti evidenti.\n\n" +
+                    "Donna di 47 anni, con prolasso mitralico noto ma mai complicato, si presenta per febbre ondulante da 3 settimane,\n" +
+                    "astenia marcata e calo ponderale di 3 kg. Riferisce episodi di sudorazioni notturne e dolore al polpaccio sinistro da qualche giorno.\n" +
+                    "Nessun recente intervento odontoiatrico, ma ha avuto una IV cannula periferica per fleboclisi due mesi fa.\n\n" +
                     "🧑‍⚕️ Esame obiettivo:\n" +
-                    "PA 128/76 mmHg, FC 92 bpm, T 36.7°C. Pallore cutaneo-mucose.\n" +
-                    "Addome trattabile, non dolente; non epato-splenomegalia palpabile.\n" +
-                    "Explorazione rettale: negativa per sangue fresco.\n\n" +
+                    "T 38.3°C, PA 115/70 mmHg, FC 98 bpm.\n" +
+                    "All’auscultazione cardiaca: soffio olosistolico in area mitralica, non nuovo ma riferito come “più intenso del solito”.\n" +
+                    "All’esame cutaneo: alcune petecchie sottoungueali, un piccolo nodulo dolente alla polpa di un dito (sospetto nodo di Osler).\n" +
+                    "Polmone: qualche rantolo crepitante basale sx.\n\n" +
                     "🧪 Esami di laboratorio:\n" +
-                    "Hb 9.6 g/dL · MCV 72 fL · MCHC ↓ · Reticolociti normali.\n" +
-                    "Ferritina 8 ng/mL (↓), Sideremia 25 µg/dL (↓), Transferrina 360 mg/dL (↑),\n" +
-                    "Indice di saturazione 7% (↓). VES lievemente ↑.\n" +
-                    "Test sangue occulto fecale: positivo su 2/3 campioni.\n\n" +
-                    "🖼️ Indagini/Imaging:\n" +
-                    "EGDS: gastrite antrale lieve, H. pylori negativo, nessun sanguinamento.\n" +
-                    "Ecografia addome: nella norma. Colonscopia programmata.\n\n" +
+                    "Leucocitosi lieve, PCR e VES aumentate.\n" +
+                    "Funzionalità renale ai limiti; microematuria all’esame urine.\n" +
+                    "Due set di emocolture: una positiva per cocchi Gram-positivi in catena, l’altra ancora in incubazione.\n\n" +
+                    "🖼️ Esami strumentali:\n" +
+                    "ECG: ritmo sinusale.\n" +
+                    "Ecocardiogramma transtoracico: insufficienza mitralica moderata, immagine sospetta compatibile con piccola vegetazione, ma non conclusiva;\n" +
+                    "transesofageo in programmazione.\n\n" +
                     "📋 Nota:\n" +
-                    "Nessuna diarrea cronica, nessun dolore addominale colico; familiarità negativa per IBD.",
+                    "Nessuna storia di neoplasia nota; nessun segno evidente di neoplasia occulta all’esame obiettivo generale.",
                 options: [
-                    "Malattia celiaca non diagnosticata",
-                    "Emorroidi interne sanguinanti",
-                    "Carcinoma del colon destro",
-                    "Angiodisplasia del cieco"
+                    "Endocardite infettiva su valvola nativa",
+                    "Pericardite virale acuta",
+                    "Tromboflebite settica degli arti inferiori",
+                    "Linfoma non-Hodgkin con fenomeni paraneoplastici"
                 ],
-                correctAnswer: 2,
-                coordinates: "Vai in BAGNO e apri l'ARMADIETTO DELLO SPECCHIO, ripiano centrale",
+                correctAnswer: 0,
+                coordinates: "Vai in BAGNO e controlla l’ARMADIETTO con lo SPECCHIO, ripiano centrale",
                 star: "⭐⭐⭐⭐⭐⭐⭐"
             }
         ];
 
-        // Caso finale per evocare Shenron
+        // Caso finale per evocare Shenron (8ª domanda)
         const finalCase = {
-            title: "Quesito Finale",
+            title: "Caso Finale",
             description:
                 "🩺 Anamnesi:\n" +
-                "Donna di 72 anni, diabetica (HbA1c recente 8.2%), con IRC stadio 3b, giunge in PS per febbre alta (39.5°C), " +
-                "brividi scuotenti, confusione mentale e oliguria da 24 ore. Riferisce dolore lombare destro e disuria da 3 giorni, " +
-                "per cui ha assunto paracetamolo senza antibiotici. Storia di UTI ricorrenti (ultimo episodio 2 mesi fa).\n\n" +
+                "Uomo di 73 anni, iperteso, diabetico tipo 2 ben controllato, ex bevitore moderato, viene portato in PS dai familiari\n" +
+                "per progressivo declino cognitivo nelle ultime 2–3 settimane con confusione fluttuante, disorientamento temporale e alcuni episodi di allucinazioni visive.\n" +
+                "Riferisce inoltre tremori fini alle mani e qualche episodio di instabilità posturale. Non febbre franca, talvolta modesta subfebbrilità.\n" +
+                "Assunzione cronica di benzodiazepine a basso dosaggio, nessuna sospensione recente.\n\n" +
                 "🧑‍⚕️ Esame obiettivo:\n" +
-                "PA 82/50 mmHg, FC 128 bpm, FR 28/min, SatO₂ 91% in aria ambiente, T 39.8°C.\n" +
-                "Paziente torpida, disorientata nel tempo; cute fredda, pallida, marezzata; CRT >3 sec.\n" +
-                "Addome: dolente in fianco destro; Giordano positivo a destra. Diuresi <15 mL/h (da catetere vescicale).\n\n" +
-                "🧪 Esami:\n" +
-                "Leucociti 22×10^3/µL (neutrofili 92%, bandemia 8%), PCR 28 mg/dL, Procalcitonina 15 ng/mL.\n" +
-                "Creatinina 3.8 mg/dL (basale 1.6), urea 125 mg/dL. Lattato 4.8 mmol/L.\n" +
-                "Emogas: pH 7.28, HCO₃⁻ 16 mEq/L, BE -9.\n" +
-                "Urinocoltura in corso; urine: leucociti +++++, batteri +++, nitriti positivi.\n" +
-                "Emocolture prelevate (2 set). Ecografia reni: idronefrosi moderata destra con calcolo pielico.\n\n" +
+                "PA 130/75 mmHg, FC 80 bpm, T 37.4°C.\n" +
+                "Paziente vigile ma rallentato, disorientato nel tempo, con flapping tremor incostante.\n" +
+                "Non deficit focali evidenti all’esame neurologico; riflessi un po’ vivaci.\n" +
+                "Non segni clinici chiari di infezione sistemica.\n\n" +
+                "🧪 Esami di laboratorio:\n" +
+                "Na⁺, K⁺, glicemia, funzionalità renale nella norma.\n" +
+                "AST/ALT lievemente ↑, bilirubina quasi nei limiti; INR lievemente elevato.\n" +
+                "Ammoniemia al limite alto della norma.\n" +
+                "Vitamina B12 ai limiti inferiori, folati normali.\n" +
+                "TSH e FT4 normali, PCR solo lievemente ↑.\n\n" +
+                "🧠 Indagini neurologiche:\n" +
+                "TC encefalo senza contrasto: non lesioni acute, atrofia corticale diffusa modesta compatibile con età.\n" +
+                "RM encefalo in corso di programmazione.\n" +
+                "EEG: rallentamento diffuso dell’attività di fondo, senza crisi epilettiche evidenti.\n\n" +
                 "📋 Nota:\n" +
-                "Paziente con criteri SOFA score 8 (ipotensione refrattaria a fluidi, AKI, ipossia, alterazione mentale).",
+                "Nessuna evidenza chiara di ictus acuto; anamnesi di sospetta epatopatia cronica mai studiata a fondo (ecografia epatica non recente).",
             options: [
-                "Sepsi urinaria con shock settico e MODS (Multiple Organ Dysfunction Syndrome)",
-                "Infarto miocardico acuto con insufficienza cardiaca",
-                "Pielonefrite acuta non complicata",
-                "Disidratazione severa da diabete scompensato"
+                "Encefalopatia epatica subacuta su probabile epatopatia cronica",
+                "Demenza di Alzheimer a esordio rapido",
+                "Encefalite virale acuta",
+                "Intossicazione acuta da benzodiazepine"
             ],
             correctAnswer: 0,
-            coordinates: "Vai in SOGGIORNO, il Drago Shenron ti attende sul TAVOLO PRINCIPALE! 🐉✨"
+            coordinates: "Vai in SOGGIORNO: il Drago Shenron ti attende sul TAVOLO PRINCIPALE! 🐉✨"
         };
 
         let currentCase = 0;
