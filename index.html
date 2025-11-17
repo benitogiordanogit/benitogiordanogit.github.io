@@ -136,6 +136,17 @@
             50% { transform: translateY(-5px); }
         }
 
+        @keyframes dragonBallGlow {
+            0%, 100% { 
+                filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6));
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% { 
+                filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.9)) drop-shadow(0 0 40px rgba(255, 165, 0, 0.6));
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+        }
+
         .content {
             padding: 40px;
             background: linear-gradient(180deg, #2c5f8d 0%, #1a4d7a 100%);
@@ -968,60 +979,25 @@
                 
                 <div class="all-balls-container">
                     <div class="completion-ball">
-                        <div class="star-container">
-                            <span class="star" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">⭐</span>
-                        </div>
+                        <img src="dragon_ball/sfera1.png" alt="Sfera del Drago 1 stella" style="width: 100%; height: 100%; object-fit: contain;">
                     </div>
                     <div class="completion-ball">
-                        <div class="star-container">
-                            <span class="star" style="top: 42%; left: 46%; transform: translate(-50%, -50%);">⭐</span>
-                            <span class="star" style="top: 58%; left: 54%; transform: translate(-50%, -50%);">⭐</span>
-                        </div>
+                        <img src="dragon_ball/sfera2.png" alt="Sfera del Drago 2 stelle" style="width: 100%; height: 100%; object-fit: contain;">
                     </div>
                     <div class="completion-ball">
-                        <div class="star-container">
-                            <span class="star" style="top: 38%; left: 50%; transform: translate(-50%, -50%);">⭐</span>
-                            <span class="star" style="top: 56%; left: 42%; transform: translate(-50%, -50%);">⭐</span>
-                            <span class="star" style="top: 56%; left: 58%; transform: translate(-50%, -50%);">⭐</span>
-                        </div>
+                        <img src="dragon_ball/sfera3.png" alt="Sfera del Drago 3 stelle" style="width: 100%; height: 100%; object-fit: contain;">
                     </div>
                     <div class="completion-ball">
-                        <div class="star-container">
-                            <span class="star" style="top: 42%; left: 42%; transform: translate(-50%, -50%);">⭐</span>
-                            <span class="star" style="top: 42%; left: 58%; transform: translate(-50%, -50%);">⭐</span>
-                            <span class="star" style="top: 58%; left: 42%; transform: translate(-50%, -50%);">⭐</span>
-                            <span class="star" style="top: 58%; left: 58%; transform: translate(-50%, -50%);">⭐</span>
-                        </div>
+                        <img src="dragon_ball/sfera4.png" alt="Sfera del Drago 4 stelle" style="width: 100%; height: 100%; object-fit: contain;">
                     </div>
                     <div class="completion-ball">
-                        <div class="star-container">
-                            <span class="star" style="top: 35%; left: 50%; transform: translate(-50%, -50%);">⭐</span>
-                            <span class="star" style="top: 52%; left: 38%; transform: translate(-50%, -50%);">⭐</span>
-                            <span class="star" style="top: 52%; left: 62%; transform: translate(-50%, -50%);">⭐</span>
-                            <span class="star" style="top: 65%; left: 44%; transform: translate(-50%, -50%);">⭐</span>
-                            <span class="star" style="top: 65%; left: 56%; transform: translate(-50%, -50%);">⭐</span>
-                        </div>
+                        <img src="dragon_ball/sfera5.png" alt="Sfera del Drago 5 stelle" style="width: 100%; height: 100%; object-fit: contain;">
                     </div>
                     <div class="completion-ball">
-                        <div class="star-container">
-                            <span class="star" style="top: 38%; left: 42%; transform: translate(-50%, -50%);">⭐</span>
-                            <span class="star" style="top: 38%; left: 58%; transform: translate(-50%, -50%);">⭐</span>
-                            <span class="star" style="top: 50%; left: 35%; transform: translate(-50%, -50%);">⭐</span>
-                            <span class="star" style="top: 50%; left: 65%; transform: translate(-50%, -50%);">⭐</span>
-                            <span class="star" style="top: 62%; left: 42%; transform: translate(-50%, -50%);">⭐</span>
-                            <span class="star" style="top: 62%; left: 58%; transform: translate(-50%, -50%);">⭐</span>
-                        </div>
+                        <img src="dragon_ball/sfera6.png" alt="Sfera del Drago 6 stelle" style="width: 100%; height: 100%; object-fit: contain;">
                     </div>
                     <div class="completion-ball">
-                        <div class="star-container">
-                            <span class="star" style="top: 32%; left: 50%; transform: translate(-50%, -50%);">⭐</span>
-                            <span class="star" style="top: 45%; left: 40%; transform: translate(-50%, -50%);">⭐</span>
-                            <span class="star" style="top: 45%; left: 60%; transform: translate(-50%, -50%);">⭐</span>
-                            <span class="star" style="top: 56%; left: 35%; transform: translate(-50%, -50%);">⭐</span>
-                            <span class="star" style="top: 56%; left: 65%; transform: translate(-50%, -50%);">⭐</span>
-                            <span class="star" style="top: 68%; left: 44%; transform: translate(-50%, -50%);">⭐</span>
-                            <span class="star" style="top: 68%; left: 56%; transform: translate(-50%, -50%);">⭐</span>
-                        </div>
+                        <img src="dragon_ball/sfera7.png" alt="Sfera del Drago 7 stelle" style="width: 100%; height: 100%; object-fit: contain;">
                     </div>
                 </div>
 
@@ -1140,8 +1116,8 @@
                 title: "Caso 2",
                 description:
                     "🩺 Anamnesi:\n" +
-                    "Donna di 35 anni, nessuna comorbilità rilevante, lamenta da alcuni mesi artralgie migranti a mani, polsi e ginocchia,\n" +
-                    "accentuate al mattino con lieve rigidità mattutina (30–40 minuti). Riferisce anche stanchezza, rash fugace al volto dopo esposizione solare\n" +
+                    "Donna di 35 anni, nessuna comorbilità rilevante, lamenta da alcuni mesi artralgie migranti a mani, polsi e ginocchia, " +
+                    "accentuate al mattino con lieve rigidità mattutina (30–40 minuti). Riferisce anche stanchezza, rash fugace al volto dopo esposizione solare " +
                     "e due episodi di ulcere orali non dolorose. Non riferisce abuso di FANS.\n\n" +
                     "🧑‍⚕️ Esame obiettivo:\n" +
                     "PA 110/70 mmHg, FC 88 bpm, T 37.3°C.\n" +
@@ -1170,7 +1146,7 @@
                 title: "Caso 3",
                 description:
                     "🩺 Anamnesi:\n" +
-                    "Donna di 52 anni, BMI 26, non fumatrice. Da alcuni mesi lamenta intenso prurito, soprattutto notturno,\n" +
+                    "Donna di 52 anni, BMI 26, non fumatrice. Da alcuni mesi lamenta intenso prurito, soprattutto notturno, " +
                     "astenia e lieve ittero insorto progressivamente. Non riferisce abuso di alcol, né uso cronico di farmaci epatotossici.\n" +
                     "Storia di ipotiroidismo autoimmune in terapia sostitutiva.\n\n" +
                     "🧑‍⚕️ Esame obiettivo:\n" +
@@ -1201,7 +1177,7 @@
                 title: "Caso 4",
                 description:
                     "🩺 Anamnesi:\n" +
-                    "Uomo di 64 anni, iperteso, ex fumatore. Da alcuni mesi lamenta dispnea da sforzo progressiva e dolore toracico costrittivo\n" +
+                    "Uomo di 64 anni, iperteso, ex fumatore. Da alcuni mesi lamenta dispnea da sforzo progressiva e dolore toracico costrittivo " +
                     "sotto sforzo intenso, che regredisce con il riposo. Riferisce un episodio sincopale durante rapida salita di scale.\n" +
                     "Nega pregressi infarti noti.\n\n" +
                     "🧑‍⚕️ Esame obiettivo:\n" +
@@ -1233,7 +1209,7 @@
                 title: "Caso 5",
                 description:
                     "🩺 Anamnesi:\n" +
-                    "Uomo di 69 anni, iperteso, ex fumatore. Da alcuni mesi lamenta astenia, ridotta tolleranza allo sforzo\n" +
+                    "Uomo di 69 anni, iperteso, ex fumatore. Da alcuni mesi lamenta astenia, ridotta tolleranza allo sforzo " +
                     "e modesto calo ponderale (~3 kg). Riferisce alvo irregolare, con feci talvolta più molli del solito,\n" +
                     "senza sangue rosso visibile. Uso sporadico di FANS per gonalgia.\n\n" +
                     "🧑‍⚕️ Esame obiettivo:\n" +
@@ -1265,7 +1241,7 @@
                 title: "Caso 6",
                 description:
                     "🩺 Anamnesi:\n" +
-                    "Uomo di 70 anni, ex fumatore (45 pack-years), iperteso in terapia. Da circa 10 giorni lamenta cefalea, nausea,\n" +
+                    "Uomo di 70 anni, ex fumatore (45 pack-years), iperteso in terapia. Da circa 10 giorni lamenta cefalea, nausea, " +
                     "lieve confusione e talvolta instabilità alla marcia. Riferisce calo ponderale negli ultimi mesi e tosse secca persistente.\n" +
                     "Nessun diuretico in terapia, nessun SSRI, nessun recente cambiamento farmacologico.\n\n" +
                     "🧑‍⚕️ Esame obiettivo:\n" +
@@ -1296,7 +1272,7 @@
                 title: "Caso 7",
                 description:
                     "🩺 Anamnesi:\n" +
-                    "Donna di 47 anni, con prolasso mitralico noto ma mai complicato, si presenta per febbre ondulante da 3 settimane,\n" +
+                    "Donna di 47 anni, con prolasso mitralico noto ma mai complicato, si presenta per febbre ondulante da 3 settimane, " +
                     "astenia marcata e calo ponderale di 3 kg. Riferisce episodi di sudorazioni notturne e dolore al polpaccio sinistro da qualche giorno.\n" +
                     "Nessun recente intervento odontoiatrico, ma ha avuto una IV cannula periferica per fleboclisi due mesi fa.\n\n" +
                     "🧑‍⚕️ Esame obiettivo:\n" +
@@ -1331,7 +1307,7 @@
             title: "Caso Finale",
             description:
                 "🩺 Anamnesi:\n" +
-                "Uomo di 73 anni, iperteso, diabetico tipo 2 ben controllato, ex bevitore moderato, viene portato in PS dai familiari\n" +
+                "Uomo di 73 anni, iperteso, diabetico tipo 2 ben controllato, ex bevitore moderato, viene portato in PS dai familiari " +
                 "per progressivo declino cognitivo nelle ultime 2–3 settimane con confusione fluttuante, disorientamento temporale e alcuni episodi di allucinazioni visive.\n" +
                 "Riferisce inoltre tremori fini alle mani e qualche episodio di instabilità posturale. Non febbre franca, talvolta modesta subfebbrilità.\n" +
                 "Assunzione cronica di benzodiazepine a basso dosaggio, nessuna sospensione recente.\n\n" +
@@ -1509,52 +1485,7 @@
             const starString = cases[currentCase].star;
             starContainer.innerHTML = '';
             
-            // Posizioni predefinite per le stelle (ben centrate e distanziate)
-            const starPositions = [
-                [
-                    {top: '50%', left: '50%'} // 1 stella: centrata
-                ],
-                [
-                    {top: '40%', left: '40%'}, // 2 stelle: diagonale ben centrata
-                    {top: '60%', left: '60%'}
-                ],
-                [
-                    {top: '38%', left: '50%'}, // 3 stelle: triangolo centrato
-                    {top: '62%', left: '40%'},
-                    {top: '62%', left: '60%'}
-                ],
-                [
-                    {top: '40%', left: '50%'}, // 4 stelle: rombo centrato
-                    {top: '50%', left: '38%'},
-                    {top: '50%', left: '62%'},
-                    {top: '60%', left: '50%'}
-                ],
-                [
-                    {top: '50%', left: '50%'}, // 5 stelle: croce centrata
-                    {top: '35%', left: '38%'},
-                    {top: '35%', left: '62%'},
-                    {top: '65%', left: '38%'},
-                    {top: '65%', left: '62%'}
-                ],
-                [
-                    {top: '35%', left: '42%'}, // 6 stelle: due colonne centrate
-                    {top: '50%', left: '42%'},
-                    {top: '65%', left: '42%'},
-                    {top: '35%', left: '58%'},
-                    {top: '50%', left: '58%'},
-                    {top: '65%', left: '58%'}
-                ],
-                [
-                    {top: '50%', left: '50%'}, // 7 stelle: cerchio centrato + centro
-                    {top: '30%', left: '50%'},
-                    {top: '38%', left: '68%'},
-                    {top: '62%', left: '68%'},
-                    {top: '70%', left: '50%'},
-                    {top: '62%', left: '32%'},
-                    {top: '38%', left: '32%'}
-                ]
-            ];
-            
+            // Conta il numero di stelle per determinare quale immagine caricare
             let starCount = 0;
             for (let char of starString) {
                 if (char === '⭐') {
@@ -1562,38 +1493,33 @@
                 }
             }
             
-            const positions = starPositions[starCount - 1] || [];
+            // Crea l'elemento immagine per la sfera del drago
+            const dragonBallImg = document.createElement('img');
+            dragonBallImg.src = `dragon_ball/sfera${starCount}.png`;
+            dragonBallImg.alt = `Sfera del Drago a ${starCount} stelle`;
+            dragonBallImg.style.width = '100%';
+            dragonBallImg.style.height = '100%';
+            dragonBallImg.style.objectFit = 'contain';
+            dragonBallImg.style.position = 'absolute';
+            dragonBallImg.style.top = '50%';
+            dragonBallImg.style.left = '50%';
+            dragonBallImg.style.transform = 'translate(-50%, -50%)';
+            dragonBallImg.style.maxWidth = '280px';
+            dragonBallImg.style.maxHeight = '280px';
+            dragonBallImg.style.animation = 'dragonBallGlow 2s ease-in-out infinite';
             
-            for (let i = 0; i < starCount; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                
-                // Crea una stella SVG in stile Dragon Ball con colore rosso-arancione
-                star.innerHTML = `
-                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <radialGradient id="starGradient-${i}" cx="30%" cy="30%">
-                                <stop offset="0%" style="stop-color:#FF6B47;stop-opacity:1" />
-                                <stop offset="50%" style="stop-color:#E53935;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#C62828;stop-opacity:1" />
-                            </radialGradient>
-                        </defs>
-                        <polygon points="50,10 61,38 90,38 68,55 76,85 50,66 24,85 32,55 10,38 39,38" 
-                                 fill="url(#starGradient-${i})" 
-                                 stroke="#B71C1C" 
-                                 stroke-width="2.5"
-                                 stroke-linejoin="miter"/>
-                    </svg>
+            // Gestione errore caricamento immagine
+            dragonBallImg.onerror = function() {
+                console.error(`Impossibile caricare l'immagine: dragon_ball/sfera${starCount}.png`);
+                starContainer.innerHTML = `
+                    <div style="color: white; text-align: center; padding: 20px; font-size: 1.2em;">
+                        ⚠️ Immagine non trovata<br>
+                        <small style="opacity: 0.8;">dragon_ball/sfera${starCount}.png</small>
+                    </div>
                 `;
-                
-                if (positions[i]) {
-                    star.style.top = positions[i].top;
-                    star.style.left = positions[i].left;
-                    star.style.transform = 'translate(-50%, -50%)';
-                }
-                
-                starContainer.appendChild(star);
-            }
+            };
+            
+            starContainer.appendChild(dragonBallImg);
             
             document.getElementById('ballNumber').textContent = currentCase + 1;
             document.getElementById('starCount').textContent = starString;
