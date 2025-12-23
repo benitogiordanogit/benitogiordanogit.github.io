@@ -1199,8 +1199,8 @@
                 </div>
 
                 <p
-                    style="color: #ffffff; font-size: 1.8em; font-weight: 900; margin: 20px auto; text-shadow: 3px 3px 6px rgba(0,0,0,0.8); background: rgba(0, 0, 0, 0.6); padding: 15px 30px; border-radius: 15px; border: 3px solid #FDB913; display: inline-block;">
-                    SFERA <span id="ballNumber">1</span> con <span id="starCount"></span>
+                    style="color: #ffffff; font-family: 'Roboto', sans-serif; font-size: 1.8em; font-weight: 900; margin: 20px auto; text-shadow: 3px 3px 6px rgba(0,0,0,0.8); background: rgba(0, 0, 0, 0.6); padding: 15px 30px; border-radius: 15px; border: 3px solid #FDB913; display: inline-block;">
+                    Sfera con <span id="starCountDisplay"></span> <span id="starWord">stella</span> trovata!
                 </p>
 
                 <div class="radar-container">
@@ -1803,8 +1803,8 @@
 
             starContainer.appendChild(dragonBallImg);
 
-            document.getElementById('ballNumber').textContent = currentCase + 1;
-            document.getElementById('starCount').textContent = starString;
+            document.getElementById('starCountDisplay').textContent = starCount;
+            document.getElementById('starWord').textContent = starCount === 1 ? 'stella' : 'stelle';
             document.getElementById('coordinates').textContent = cases[currentCase].coordinates;
         }
 
