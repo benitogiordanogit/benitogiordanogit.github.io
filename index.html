@@ -971,7 +971,59 @@
         /* Responsive */
         @media (max-width: 768px) {
             .header h1 {
-                font-size: 2.5em;
+                font-size: 2em;
+                padding: 15px 10px;
+            }
+
+            .dragon-ball-counter {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .welcome-screen h2 {
+                font-size: 2em;
+                padding: 15px 25px;
+            }
+
+            .welcome-screen p {
+                font-size: 1.2em;
+                padding: 15px 20px;
+            }
+
+            .btn {
+                font-size: 1.3em;
+                padding: 15px 35px;
+            }
+
+            .case-number {
+                font-size: 1.5em;
+                padding: 12px 25px;
+            }
+
+            .case-content h3 {
+                font-size: 1.6em;
+            }
+
+            .case-content p {
+                font-size: 1em;
+                padding: 15px;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+            }
+
+            .answer-section>label {
+                font-size: 1.4em;
+                padding: 12px 20px;
+            }
+
+            .option-btn {
+                font-size: 1em;
+                padding: 12px 15px;
+                margin: 8px 0;
             }
 
             .dragon-ball-display,
@@ -985,9 +1037,85 @@
                 height: 280px;
             }
 
+            .coordinates-display {
+                font-size: 1.2em;
+                padding: 20px;
+            }
+
+            .completion-screen h2 {
+                font-size: 2.5em;
+                padding: 15px 30px;
+            }
+
+            .completion-screen p {
+                font-size: 1.3em;
+                padding: 15px 20px;
+            }
+
             .completion-ball {
                 width: 60px;
                 height: 60px;
+            }
+
+            .popup-content {
+                padding: 30px 20px;
+                width: 95%;
+            }
+
+            .popup-content h2 {
+                font-size: 2.2em;
+            }
+
+            .popup-content p {
+                font-size: 1.1em;
+            }
+
+            .dragon-container img {
+                max-width: 100%;
+            }
+        }
+
+        /* Responsive extra per iPhone piccoli (iPhone SE, iPhone 8, etc.) */
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.6em;
+                padding: 12px 8px;
+            }
+
+            .welcome-screen h2 {
+                font-size: 1.7em;
+                padding: 12px 20px;
+            }
+
+            .welcome-screen p {
+                font-size: 1em;
+                padding: 12px 15px;
+            }
+
+            .btn {
+                font-size: 1.2em;
+                padding: 12px 30px;
+            }
+
+            .case-content p {
+                font-size: 0.95em;
+            }
+
+            .answer-section>label {
+                font-size: 1.2em;
+            }
+
+            .option-btn {
+                font-size: 0.95em;
+                padding: 10px 12px;
+            }
+
+            .popup-content h2 {
+                font-size: 1.8em;
+            }
+
+            .popup-content p {
+                font-size: 1em;
             }
         }
     </style>
@@ -1552,6 +1680,7 @@
             document.getElementById('welcomeScreen').style.display = 'none';
             document.getElementById('caseScreen').style.display = 'block';
             loadCase(0);
+            window.scrollTo(0, 0);
         }
 
         function loadCase(caseIndex) {
@@ -1686,6 +1815,7 @@
                 document.getElementById('caseScreen').style.display = 'block';
                 loadCase(currentCase);
             }
+            window.scrollTo(0, 0);
         }
 
         // Mostra il popup del colpo di scena
